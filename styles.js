@@ -109,7 +109,7 @@ const globalStyles = StyleSheet.create({
     position: "absolute",
     bottom: 20,
     right: 20,
-    backgroundColor: "#E07A5F", // Blue background color
+    backgroundColor: "crimson", // Blue background color
     borderRadius: 30,
     padding: 15,
     width: 60, // Set width to accommodate the button content
@@ -160,7 +160,7 @@ const globalStyles = StyleSheet.create({
   headerContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: "#76949F",
+    backgroundColor: "#609BCB",
     borderBottomWidth: 5,
     borderColor: "#f0f0f0",
   },

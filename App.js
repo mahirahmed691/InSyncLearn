@@ -1,5 +1,4 @@
-// Dashboard.js
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -10,6 +9,9 @@ import NotificationsScreen from "./NotificationsScreen";
 import HomeScreen from "./HomeScreen";
 import CourseDetailScreen from "./CourseDetailScreen";
 import UploadScreen from "./UploadScreen";
+import AuthScreen from "./AuthScreen";
+import AdminDashboard from "./AdminHomeScreen"; // Import AdminDashboard
+import YouthWorkerDashboard from "./YouthworkDashboard"; // Import YouthWorkerDashboard
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -41,16 +43,15 @@ const DashboardTabs = () => (
           iconName = focused ? "person" : "person-outline";
         } else if (route.name === "Settings") {
           iconName = focused ? "settings" : "settings-outline";
-        }else if (route.name === "Upload") {
+        } else if (route.name === "Upload") {
           iconName = focused ? "cloud-upload" : "cloud-upload-outline";
         }
-
 
         return <Icon name={iconName} size={size} color={color} />;
       },
     })}
     tabBarOptions={{
-      activeTintColor: "#76949F",
+      activeTintColor: "#609BCB",
       inactiveTintColor: "crimson",
     }}
   >
@@ -63,9 +64,93 @@ const DashboardTabs = () => (
 );
 
 export default function Dashboard() {
+  const [userRole, setUserRole] = useState(""); // State to hold user role
+
+  // Function to determine user role based on authentication
+  const determineUserRole = () => {
+    // Logic to determine user role (e.g., from authentication token)
+    // For demonstration purposes, let's assume the user role is "user"
+    setUserRole("user");
+  };
+
+  // Call determineUserRole when component mounts
+  useEffect(() => {
+    determineUserRole();
+  }, []);
+
   return (
     <NavigationContainer>
-      <MainStack />
+      <Stack.Navigator
+        screenOptions={{
+          gestureEnabled: false, // Disable gestures for navigating back
+        }}
+      >
+        {userRole === "admin" ? (
+          <>
+            <Stack.Screen
+              name="Admin"
+              component={AdminDashboard}
+              options={{ headerShown: false }}
+            />
+          </>
+        ) : userRole === "youthWorker" ? (
+          <>
+            <Stack.Screen
+              name="YouthWork"
+              component={YouthWorkerDashboard}
+              options={{ headerShown: false }}
+            />
+          </>
+        ) : (
+          <>
+            <Stack.Screen
+              name="Dashboard"
+              component={MainStack}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Admin"
+              component={AdminDashboard}
+              options={{ headerShown: false }}
+            />
+             <Stack.Screen
+              name="YouthWork"
+              component={YouthWorkerDashboard}
+              options={{ headerShown: false }}
+            />
+          </>
+        )}
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Settings"
+          component={SettingsScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Courses"
+          component={CoursesScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Notifications"
+          component={NotificationsScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Upload"
+          component={UploadScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Auth"
+          component={AuthScreen}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

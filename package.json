@@ -8,6 +8,8 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-community/viewpager": "^5.0.11",
+    "@react-native-google-signin/google-signin": "^11.0.0",
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/stack": "^6.3.20",
@@ -33,12 +35,18 @@
     "firebase": "^10.7.2",
     "react": "18.2.0",
     "react-native": "0.73.2",
+    "react-native-app-auth": "^7.1.0",
     "react-native-document-picker": "^9.1.0",
     "react-native-elements": "^3.4.3",
     "react-native-gesture-handler": "^2.14.1",
+    "react-native-google-drive-api-wrapper": "^1.4.0",
+    "react-native-google-signin": "^2.1.1",
+    "react-native-modal": "^13.0.1",
+    "react-native-reanimated": "^3.6.2",
     "react-native-safe-area-context": "^4.8.2",
     "react-native-swipe-list-view": "^3.2.9",
-    "react-native-vector-icons": "^10.0.3"
+    "react-native-vector-icons": "^10.0.3",
+    "react-navigation": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

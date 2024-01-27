@@ -1,4 +1,3 @@
-// CourseDetailScreen.js
 import React from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 
@@ -11,7 +10,7 @@ const CourseDetailScreen = ({ route }) => {
       <View style={styles.courseDetailsContainer}>
         <Text style={styles.courseTitle}>{course.title}</Text>
         <Text style={styles.courseDescription}>
-          {content} {/* Use the content parameter here */}
+          {content} 
         </Text>
       </View>
     </ScrollView>

@@ -54,7 +54,7 @@ const recentCourses = [
 
   {
     title: "Recent Course 2",
-    image: require("./assets/understanding-autism.jpeg"),
+    image: require("./assets/teaching.jpeg"),
     content:
       "Explore evidence-based teaching strategies tailored to the unique needs of students with autism. Learn to create inclusive and supportive learning environments that foster academic and social success.",
   },
@@ -170,7 +170,7 @@ export default function HomeScreen() {
               onPress={() =>
                 navigation.navigate("CourseDetail", {
                   course: course,
-                  content: course.content, // Pass down content as a parameter
+                  content: course.content, 
                 })
               }
             >

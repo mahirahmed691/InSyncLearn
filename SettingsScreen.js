@@ -1,10 +1,11 @@
 // SettingsScreen.js
 
 import React, { useState } from "react";
-import { SafeAreaView, Text, View, Switch, StyleSheet } from "react-native";
+import { SafeAreaView, Text, View, Switch, StyleSheet,} from "react-native";
+import { Button } from "react-native-elements";
 import { Divider, ListItem, Icon } from "react-native-elements";
 
-const SettingsScreen = () => {
+const SettingsScreen = ({ navigation }) => {
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [darkModeEnabled, setDarkModeEnabled] = useState(false);
   const [highContrastModeEnabled, setHighContrastModeEnabled] = useState(false);
@@ -12,7 +13,7 @@ const SettingsScreen = () => {
   const [autoPlayVideosEnabled, setAutoPlayVideosEnabled] = useState(true);
   const [language, setLanguage] = useState("English");
 
-  const thumbColor="#89608E"
+  const thumbColor = "#89608E";
 
   const toggleNotifications = () => {
     setNotificationsEnabled((prev) => !prev);
@@ -36,6 +37,12 @@ const SettingsScreen = () => {
 
   const changeLanguage = () => {
     setLanguage((prev) => (prev === "English" ? "Spanish" : "English"));
+  };
+
+  const handleLogout = () => {
+    // Implement your logout logic here
+    // Example: Navigate to the login screen
+    navigation.navigate("Auth");
   };
 
   return (
@@ -108,6 +115,8 @@ const SettingsScreen = () => {
             thumbColor={autoPlayVideosEnabled ? "#fff" : "#f4f3f4"}
           />
         </ListItem>
+
+        {/* Add more accessibility settings here */}
       </View>
 
       <View style={styles.sectionContainer}>
@@ -121,6 +130,14 @@ const SettingsScreen = () => {
           </ListItem.Content>
           <ListItem.Chevron onPress={changeLanguage} />
         </ListItem>
+      </View>
+
+      <View style={styles.logoutContainer}>
+        <Button
+          buttonStyle={styles.logoutButton}
+          title="Logout"
+          onPress={handleLogout}
+        />
       </View>
     </SafeAreaView>
   );
@@ -140,11 +157,20 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#333",
     marginBottom: 10,
-    marginLeft:10,
-    marginTop:10
+    marginLeft: 10,
+    marginTop: 10,
   },
   divider: {
     marginVertical: 10,
+  },
+  logoutContainer: {
+    marginTop: 50,
+    alignItems: "center",
+  },
+  logoutButton: {
+    width: "150%",
+    backgroundColor: "#000",
+    alignSelf:'center',
   },
 });
 
