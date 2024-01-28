@@ -58,6 +58,18 @@ const AuthScreen = () => {
     // Example navigation to Dashboard
     navigation.navigate("Dashboard");
   };
+  const handleYouth = () => {
+    // Implement your register logic here
+    console.log("Register with:", email, password);
+    // Example navigation to Dashboard
+    navigation.navigate("YouthWork");
+  };
+  const handleAdmin = () => {
+    // Implement your register logic here
+    console.log("Register with:", email, password);
+    // Example navigation to Dashboard
+    navigation.navigate("Admin");
+  };
 
   return (
     <ImageBackground source={backgroundImg} style={styles.background}>
@@ -83,7 +95,13 @@ const AuthScreen = () => {
             <Text style={styles.buttonText}>Login</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={handleRegister}>
-            <Text style={styles.buttonText}>Register</Text>
+            <Text style={styles.buttonText}>User</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={handleYouth}>
+            <Text style={styles.buttonText}>Youth Worker</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={handleAdmin}>
+            <Text style={styles.buttonText}>Admin</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.footer}>
@@ -104,13 +122,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     backgroundColor: "rgba(255, 255, 255, 0)", // Adjust opacity as needed
-    padding: 20,
-    backgroundColor: "#609BCB",
+    justifyContent:'center'
   },
   logo: {
-    width: 300,
-    height: 300,
-    marginBottom: 20,
+    width: 150,
+    height: 150,
+    marginBottom: 10,
+    borderRadius:40
   },
   form: {
     width: "100%",

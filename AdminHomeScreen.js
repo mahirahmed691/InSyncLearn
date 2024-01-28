@@ -6,40 +6,35 @@ import {
   ScrollView,
   TouchableOpacity,
   StyleSheet,
+  ImageBackground,
+  StatusBar,
+  Platform,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native"; // Import the useNavigation hook
-import { MaterialIcons } from "@expo/vector-icons"; // Import MaterialIcons for icons
+import { useNavigation } from "@react-navigation/native"; 
+import { MaterialIcons } from "@expo/vector-icons"; 
 
 const AdminDashboard = () => {
-  const navigation = useNavigation(); // Get navigation object
+  const navigation = useNavigation(); 
 
-  // Function to handle logout
   const handleLogout = () => {
-    // Navigate back to the login screen
     navigation.navigate("Auth");
   };
 
-  // Sample data for user counts
   const userCounts = {
     teachers: 10,
     learners: 40,
     youthWorkers: 60,
-    // Add more user types and counts as needed
   };
 
-  // Sample data for courses
   const courses = [
     { id: 1, title: "Introduction to Mathematics", enrolled: 25 },
     { id: 2, title: "English Literature", enrolled: 35 },
     { id: 3, title: "History of Art", enrolled: 15 },
-    // Add more courses as needed
   ];
 
-  // Sample data for notifications
   const notifications = [
     { id: 1, message: "New course added: Physics 101" },
     { id: 2, message: "Reminder: Upcoming exam on Friday" },
-    // Add more notifications as needed
   ];
 
   const recentActivity = [
@@ -53,101 +48,101 @@ const AdminDashboard = () => {
       action: "Updated user profile: John Doe",
       timestamp: "3 hours ago",
     },
-    // Add more recent activity items as needed
   ];
 
-  // Quick actions data
   const quickActions = [
     { id: 1, title: "Create New Course", icon: "add-circle-outline" },
-    { id: 2, title: "View Analytics", icon: "analytics-outline" },
-    // Add more quick actions as needed
+    { id: 2, title: "View Analytics", icon: "analytics" },
   ];
+
+  const handleMessageUser = (userType) => {
+    // Navigate to the messaging screen with parameters identifying the selected user
+    navigation.navigate("Messaging", { userType });
+  };
+
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Header */}
-      <View style={styles.headerContainer}>
-        <Text style={styles.greetingText}>Hello, Admin!</Text>
-        {/* Logout button */}
-        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-          <MaterialIcons name="logout" size={24} color="white" />
-        </TouchableOpacity>
-      </View>
+      <StatusBar translucent backgroundColor="transparent" />
+      <ImageBackground
+        source={require("./assets/adminBackground.jpeg")}
+        style={styles.background}
+      >
+        <View style={styles.headerContainer}>
+          <Text style={styles.greetingText}>Hello, Admin!</Text>
+          <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+            <MaterialIcons name="logout" size={24} color="#fff" />
+          </TouchableOpacity>
+        </View>
 
-      {/* Main Content */}
-      <ScrollView contentContainerStyle={styles.content}>
-        {/* User Counts Section */}
+        <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.sectionContainer}>
-          <Text style={styles.sectionHeader}>Member's</Text>
-          {/* Display user counts */}
-          <View style={styles.userCountContainer}>
-            <View style={styles.userCountItem}>
-              <Text style={styles.userCountLabel}>Teachers</Text>
-              <Text style={styles.userCount}>{userCounts.teachers}</Text>
+            <Text style={styles.sectionHeader}>Member's</Text>
+            <View style={styles.userCountContainer}>
+              {Object.keys(userCounts).map((key) => (
+                <TouchableOpacity 
+                  key={key} 
+                  style={styles.userCountItem} 
+                  onPress={() => handleMessageUser(key)}
+                >
+                  <Text style={styles.userCountLabel}>{key}</Text>
+                  <Text style={styles.userCount}>{userCounts[key]}</Text>
+                </TouchableOpacity>
+              ))}
             </View>
-            <View style={styles.userCountItem}>
-              <Text style={styles.userCountLabel}>Learners</Text>
-              <Text style={styles.userCount}>{userCounts.learners}</Text>
-            </View>
-            <View style={styles.userCountItem}>
-              <Text style={styles.userCountLabel}>Youth Workers</Text>
-              <Text style={styles.userCount}>{userCounts.youthWorkers}</Text>
-            </View>
-            {/* Add more user types as needed */}
           </View>
-        </View>
 
-        {/* Course Management Section */}
-        <View style={styles.sectionContainer}>
-          <Text style={styles.sectionHeader}>Courses</Text>
-          {/* Display list of courses */}
-          {courses.map((course) => (
-            <TouchableOpacity key={course.id} style={styles.courseItem}>
-              <Text style={styles.courseTitle}>{course.title}</Text>
-              <Text style={styles.courseEnrolled}>
-                Enrolled: {course.enrolled}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-
-        {/* Notifications Section */}
-        <View style={styles.sectionContainer}>
-          <Text style={styles.sectionHeader}>Notifications</Text>
-          {/* Display list of notifications */}
-          {notifications.map((notification) => (
-            <TouchableOpacity
-              key={notification.id}
-              style={styles.notificationItem}
-            >
-              <Text style={styles.notificationMessage}>
-                {notification.message}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-        <View style={styles.sectionContainer}>
-          <Text style={styles.sectionHeader}>Recent Activity</Text>
-          {recentActivity.map((activity) => (
-            <TouchableOpacity key={activity.id} style={styles.activityItem}>
-              <Text style={styles.activityAction}>{activity.action}</Text>
-              <Text style={styles.activityTimestamp}>{activity.timestamp}</Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-
-        <View style={styles.sectionContainer}>
-          <Text style={styles.sectionHeader}>Quick Actions</Text>
-          <View style={styles.quickActionsContainer}>
-            {quickActions.map((action) => (
-              <TouchableOpacity key={action.id} style={styles.quickActionItem}>
-                <MaterialIcons name={action.icon} size={24} color="#609BCB" />
-                <Text style={styles.quickActionTitle}>{action.title}</Text>
+          <View style={styles.sectionContainer}>
+            <Text style={styles.sectionHeader}>Courses</Text>
+            {courses.map((course) => (
+              <TouchableOpacity key={course.id} style={styles.courseItem}>
+                <Text style={styles.courseTitle}>{course.title}</Text>
+                <Text style={styles.courseEnrolled}>
+                  Enrolled: {course.enrolled}
+                </Text>
               </TouchableOpacity>
             ))}
           </View>
-        </View>
-      </ScrollView>
+
+          <View style={styles.sectionContainer}>
+            <Text style={styles.sectionHeader}>Notifications</Text>
+            {notifications.map((notification) => (
+              <TouchableOpacity
+                key={notification.id}
+                style={styles.notificationItem}
+              >
+                <Text style={styles.notificationMessage}>
+                  {notification.message}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+          
+          <View style={styles.sectionContainer}>
+            <Text style={styles.sectionHeader}>Recent Activity</Text>
+            {recentActivity.map((activity) => (
+              <TouchableOpacity key={activity.id} style={styles.activityItem}>
+                <Text style={styles.activityAction}>{activity.action}</Text>
+                <Text style={styles.activityTimestamp}>{activity.timestamp}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+
+          <View style={styles.sectionContainer}>
+            <Text style={styles.sectionHeader}>Quick Actions</Text>
+            <View style={styles.quickActionsContainer}>
+              {quickActions.map((action) => (
+                <TouchableOpacity key={action.id} style={styles.quickActionItem}>
+                  <MaterialIcons name={action.icon} size={24} color="#609BCB" />
+                  <Text style={styles.quickActionTitle}>{action.title}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+
+            
+          </View>
+        </ScrollView>
+      </ImageBackground>
     </SafeAreaView>
   );
 };
@@ -155,23 +150,27 @@ const AdminDashboard = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ffffff", // White background
+  },
+  background: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
   },
   headerContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#609BCB", // Blue header background
     paddingHorizontal: 20,
-    paddingVertical: 15,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    paddingBottom: 15,
   },
   greetingText: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#ffffff", // White text
+    color: "#fff",
   },
   logoutButton: {
-    padding: 10, // Increased padding for touchability
+    padding: 10,
   },
   content: {
     flexGrow: 1,
@@ -179,7 +178,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
   },
   sectionContainer: {
-    backgroundColor: "#f2f2f2", // Light gray background for sections
+    backgroundColor: "rgba(255, 255, 255, 0.8)",
     marginBottom: 20,
     padding: 15,
     borderRadius: 10,
@@ -189,7 +188,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 10,
-    color: "#333333", // Dark gray section headers
+    color: "#333333",
   },
   userCountContainer: {
     flexDirection: "row",
@@ -201,38 +200,38 @@ const styles = StyleSheet.create({
   },
   userCountLabel: {
     fontSize: 16,
-    color: "#666666", // Gray user count labels
+    color: "#666666",
   },
   userCount: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#609BCB", // Blue user count numbers
+    color: "#609BCB",
   },
   courseItem: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingVertical: 15, // Increased padding for touchability
+    paddingVertical: 15,
     borderBottomWidth: 1,
-    borderBottomColor: "#dddddd", // Light gray border
+    borderBottomColor: "#dddddd",
   },
   courseTitle: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#333333", // Dark gray course titles
+    color: "#333333",
   },
   courseEnrolled: {
     fontSize: 14,
-    color: "#666666", // Gray enrolled numbers
+    color: "#666666",
   },
   notificationItem: {
-    paddingVertical: 15, // Increased padding for touchability
+    paddingVertical: 15,
     borderBottomWidth: 1,
-    borderBottomColor: "#dddddd", // Light gray border
+    borderBottomColor: "#dddddd",
   },
   notificationMessage: {
     fontSize: 14,
-    color: "#333333", // Dark gray notification messages
+    color: "#333333",
   },
   activityItem: {
     paddingVertical: 15,
