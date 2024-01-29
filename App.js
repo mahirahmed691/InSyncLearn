@@ -13,6 +13,7 @@ import AuthScreen from "./AuthScreen";
 import AdminDashboard from "./AdminHomeScreen"; // Import AdminDashboard
 import YouthWorkerDashboard from "./YouthworkDashboard"; // Import YouthWorkerDashboard
 import MessagingScreen from "./MessagingScreen";
+import RegisterScreen from "./RegisterScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -156,6 +157,11 @@ export default function Dashboard() {
           component={MessagingScreen}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+              name="Register"
+              component={RegisterScreen}
+              options={{ headerShown: false }}
+            />
       </Stack.Navigator>
     </NavigationContainer>
   );

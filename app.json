@@ -7,7 +7,7 @@
     "icon": "./assets/Logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/Logo.png",
+      "image": "./assets/splash.gif",
       "resizeMode": "contain",
       "backgroundColor": "#FFF"
     },
@@ -32,6 +32,9 @@
       "eas": {
         "projectId": "638a2f24-6566-4c69-aa8f-02ff8d762946"
       }
-    }
+    },
+    "plugins": [
+      "expo-secure-store"
+    ]
   }
 }

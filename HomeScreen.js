@@ -98,7 +98,7 @@ export default function HomeScreen() {
       <View style={styles.headerContainer}>
         <Text style={styles.greetingText}>Hello, User!</Text>
         <Image
-          source={require("./assets/icon.png")} // Replace with your logo source
+          source={require("./assets/Logo.png")} // Replace with your logo source
           style={styles.logo}
         />
       </View>

@@ -12,6 +12,7 @@ import {
   Pressable,
   ScrollView
 } from "react-native";
+import { FontAwesome } from '@expo/vector-icons'; // Import FontAwesome icons
 import { useNavigation } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import AdminDashboard from "./AdminHomeScreen"; // Import AdminDashboard
@@ -61,24 +62,14 @@ const AuthScreen = () => {
     }
   };
 
+
   const handleRegister = () => {
     // Implement your register logic here
     console.log("Register with:", email, password);
     // Example navigation to Dashboard
-    navigation.navigate("Dashboard");
+    navigation.navigate("Register");
   };
-  const handleYouth = () => {
-    // Implement your register logic here
-    console.log("Register with:", email, password);
-    // Example navigation to Dashboard
-    navigation.navigate("YouthWork");
-  };
-  const handleAdmin = () => {
-    // Implement your register logic here
-    console.log("Register with:", email, password);
-    // Example navigation to Dashboard
-    navigation.navigate("Admin");
-  };
+ 
 
   const toggleModal = () => {
     setModalVisible(!modalVisible);
@@ -119,13 +110,21 @@ const AuthScreen = () => {
           <TouchableOpacity style={styles.button} onPress={handleRegister}>
             <Text style={styles.buttonText}>Register</Text>
           </TouchableOpacity>
-          {/* <TouchableOpacity style={styles.button} onPress={handleYouth}>
-            <Text style={styles.buttonText}>Youth Worker</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={handleAdmin}>
-            <Text style={styles.buttonText}>Admin</Text>
-          </TouchableOpacity> */}
         </View>
+        <View style={styles.socialButtonsContainer}>
+        {/* Google */}
+        <TouchableOpacity style={[styles.socialButton, { backgroundColor: '#DB4437' }]}>
+          <FontAwesome name="google" size={24} color="white" />
+        </TouchableOpacity>
+        {/* Facebook */}
+        <TouchableOpacity style={[styles.socialButton, { backgroundColor: '#3b5998' }]}>
+          <FontAwesome name="facebook" size={24} color="white" />
+        </TouchableOpacity>
+        {/* Twitter */}
+        <TouchableOpacity style={[styles.socialButton, { backgroundColor: '#1DA1F2' }]}>
+          <FontAwesome name="linkedin" size={24} color="white" />
+        </TouchableOpacity>
+      </View>
         <View style={styles.footer}>
           <Text style={styles.footerText}>
             © 2024 InSyncLearn. All rights reserved.
@@ -296,6 +295,22 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
   },
+  socialButtonsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginTop: 40,
+    width: "50%",
+  },
+  socialButton: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth:2,
+    borderColor:"white"
+  },
+
 });
 
 export default AuthScreen;
