@@ -2,8 +2,8 @@
 import React from "react";
 import { View, Text, SafeAreaView, ScrollView } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-import CourseCard from "./CourseCard";
-import styles from "./styles";
+import CourseCard from "../utils/CourseCard";
+import styles from "../styles";
 
 const UserHomeScreen = () => {
   // Customize user content here

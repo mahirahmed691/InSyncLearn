@@ -84,7 +84,7 @@ const YouthworkDashboard = () => {
     <View style={styles.container}>
       <StatusBar translucent backgroundColor="transparent" />
       <ImageBackground
-        source={require("./assets/youthBackground.png")}
+        source={require("../assets/youthBackground.png")}
         style={styles.background}
       >
         <View style={styles.headerContainer}>

@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { useNavigation } from "@react-navigation/native";
-import { supabase } from "./utils/supabase"; // Make sure to import your Supabase client
+import { supabase } from "../utils/supabase"; // Make sure to import your Supabase client
 
 const RegisterScreen = () => {
   const [email, setEmail] = useState("");
@@ -20,7 +20,7 @@ const RegisterScreen = () => {
   const [role, setRole] = useState("");
   const navigation = useNavigation();
 
-  const backgroundImg = require("./assets/learn.gif");
+  const backgroundImg = require("../assets/learn.gif");
 
   const handleRegister = async () => {
     try {

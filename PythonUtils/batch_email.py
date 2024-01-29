@@ -42,7 +42,7 @@ def main():
     sender_password = "edcekugujjioiqbw"
     template_path = "email_template.txt"
     subject = "Hello"
-    image_path = './assets/Logo.png'
+    image_path = '../assets/Logo.png'
 
     with open(template_path, 'r') as template_file:
         message_template = template_file.read()

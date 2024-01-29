@@ -1,7 +1,7 @@
 // CoursesScreen.js
 import React from 'react';
 import { SafeAreaView, View, Text, Image, ScrollView } from 'react-native';
-import styles from './styles';
+import styles from '../styles';
 
 const coursesData = [
   {
@@ -9,14 +9,14 @@ const coursesData = [
     description: 'This course provides in-depth insights into autism spectrum disorders.',
     requirements: 'Course Requirements: None',
     instructors: 'Instructors: Dr. John Doe, Prof. Jane Smith',
-    image: require('./assets/autism-banner.png')
+    image: require('../assets/autism-banner.png')
   },
   {
     title: 'Teaching Strategies for Autism',
     description: 'Learn effective teaching strategies for students with autism.',
     requirements: 'Course Requirements: Basic knowledge of education principles',
     instructors: 'Instructors: Prof. Sarah Johnson, Dr. Michael Brown',
-    image: require('./assets/autism-awareness.png')
+    image: require('../assets/autism-awareness.png')
   },
 ];
 

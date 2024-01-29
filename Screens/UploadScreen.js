@@ -10,8 +10,8 @@ import {
 import * as DocumentPicker from "expo-document-picker";
 import { authorize } from "react-native-app-auth";
 
-const googleDriveIcon = require("./assets/googleDriveIcon.png");
-const oneDriveIcon = require("./assets/OneDrive-Logo.wine.png");
+const googleDriveIcon = require("../assets/googleDriveIcon.png");
+const oneDriveIcon = require("../assets/OneDrive-Logo.wine.png");
 
 const UploadScreen = () => {
   const [selectedFile, setSelectedFile] = useState(null);

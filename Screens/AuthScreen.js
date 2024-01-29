@@ -18,8 +18,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import AdminDashboard from "./AdminHomeScreen"; // Import AdminDashboard
 import { IconButton } from "react-native-paper";
 
-const backgroundImg = require("./assets/learn.gif");
-const logoImg = require("./assets/Logo.png");
+const backgroundImg = require("../assets/learn.gif");
+const logoImg = require("../assets/Logo.png");
 
 const users = [
   { email: "mahirahmed691@gmail.com", password: "admin123", role: "admin" },

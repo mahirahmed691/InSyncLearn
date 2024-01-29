@@ -12,20 +12,20 @@ import {
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons"; // Import MaterialIcons
 import { SearchBar, Button, Icon } from "react-native-elements";
-import CourseCard from "./CourseCard";
-import styles from "./styles";
+import CourseCard from "../utils/CourseCard";
+import styles from "../styles";
 import { useNavigation } from "@react-navigation/native";
 
 const allCourses = [
   {
     title: "Understanding Autism",
-    image: require("./assets/understanding-autism.jpeg"),
+    image: require("../assets/understanding-autism.jpeg"),
     content:
       "This comprehensive course provides an in-depth understanding of autism spectrum disorders. Topics covered include diagnostic criteria, behavioral characteristics, and effective intervention strategies.",
   },
   {
     title: "Understanding Autism",
-    image: require("./assets/understanding-autism.jpeg"),
+    image: require("../assets/understanding-autism.jpeg"),
     content:
       "This comprehensive course provides an in-depth understanding of autism spectrum disorders. Topics covered include diagnostic criteria, behavioral characteristics, and effective intervention strategies.",
   },
@@ -34,7 +34,7 @@ const allCourses = [
 const recentCourses = [
   {
     title: "Understanding Autism",
-    image: require("./assets/understanding-autism.jpeg"),
+    image: require("../assets/understanding-autism.jpeg"),
     content:
       "This comprehensive course provides an in-depth understanding of autism spectrum disorders. Topics covered include diagnostic criteria, behavioral characteristics, and effective intervention strategies.",
   },
@@ -98,7 +98,7 @@ export default function HomeScreen() {
       <View style={styles.headerContainer}>
         <Text style={styles.greetingText}>Hello, User!</Text>
         <Image
-          source={require("./assets/Logo.png")} // Replace with your logo source
+          source={require("../assets/Logo.png")} // Replace with your logo source
           style={styles.logo}
         />
       </View>

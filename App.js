@@ -3,17 +3,17 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Icon from "react-native-vector-icons/Ionicons";
-import SettingsScreen from "./SettingsScreen";
-import CoursesScreen from "./CoursesScreen";
-import NotificationsScreen from "./NotificationsScreen";
-import HomeScreen from "./HomeScreen";
-import CourseDetailScreen from "./CourseDetailScreen";
-import UploadScreen from "./UploadScreen";
-import AuthScreen from "./AuthScreen";
-import AdminDashboard from "./AdminHomeScreen"; // Import AdminDashboard
-import YouthWorkerDashboard from "./YouthworkDashboard"; // Import YouthWorkerDashboard
-import MessagingScreen from "./MessagingScreen";
-import RegisterScreen from "./RegisterScreen";
+import SettingsScreen from "./Screens/SettingsScreen";
+import CoursesScreen from "./Screens/CoursesScreen";
+import NotificationsScreen from "./Screens/NotificationsScreen";
+import HomeScreen from "./Screens/HomeScreen";
+import CourseDetailScreen from "./Screens/CourseDetailScreen";
+import UploadScreen from "./Screens/UploadScreen";
+import AuthScreen from "./Screens/AuthScreen";
+import AdminDashboard from "./Screens/AdminHomeScreen"; // Import AdminDashboard
+import YouthWorkerDashboard from "./Screens/YouthworkDashboard"; // Import YouthWorkerDashboard
+import MessagingScreen from "./Screens/MessagingScreen";
+import RegisterScreen from "./Screens/RegisterScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
