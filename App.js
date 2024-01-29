@@ -52,8 +52,8 @@ const DashboardTabs = () => (
       },
     })}
     tabBarOptions={{
-      activeTintColor: "#609BCB",
-      inactiveTintColor: "crimson",
+      activeTintColor: "#20CABE",
+      inactiveTintColor: "#000",
     }}
   >
     <Tab.Screen name="Home" component={HomeScreen} />

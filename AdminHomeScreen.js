@@ -10,20 +10,21 @@ import {
   StatusBar,
   Platform,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native"; 
-import { MaterialIcons } from "@expo/vector-icons"; 
+import { useNavigation } from "@react-navigation/native";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const AdminDashboard = () => {
-  const navigation = useNavigation(); 
+  const navigation = useNavigation();
 
   const handleLogout = () => {
     navigation.navigate("Auth");
   };
 
   const userCounts = {
-    teachers: 10,
-    learners: 40,
-    youthWorkers: 60,
+    Teachers: 10,
+    Learners: 40,
+    "Youth Workers": 60,
+    Parents: 80,
   };
 
   const courses = [
@@ -60,29 +61,35 @@ const AdminDashboard = () => {
     navigation.navigate("Messaging", { userType });
   };
 
-
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <StatusBar translucent backgroundColor="transparent" />
       <ImageBackground
-        source={require("./assets/adminBackground.jpeg")}
+        source={require("./assets/youthBackground.png")}
         style={styles.background}
       >
         <View style={styles.headerContainer}>
-          <Text style={styles.greetingText}>Hello, Admin!</Text>
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <MaterialIcons name="dashboard" size={34} color="#fff" />
+            <Text style={styles.greetingText}>Hello, Admin!</Text>
+          </View>
           <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-            <MaterialIcons name="logout" size={24} color="#fff" />
+            <MaterialIcons name="logout" size={20} color="#fff" />
           </TouchableOpacity>
         </View>
 
         <ScrollView contentContainerStyle={styles.content}>
-        <View style={styles.sectionContainer}>
-            <Text style={styles.sectionHeader}>Member's</Text>
+          <View style={styles.sectionContainer}>
+            <Text style={styles.sectionHeader}>
+              <MaterialIcons name="people" size={24} color="#000" /> Members
+            </Text>
             <View style={styles.userCountContainer}>
               {Object.keys(userCounts).map((key) => (
-                <TouchableOpacity 
-                  key={key} 
-                  style={styles.userCountItem} 
+                <TouchableOpacity
+                  key={key}
+                  style={styles.userCountItem}
                   onPress={() => handleMessageUser(key)}
                 >
                   <Text style={styles.userCountLabel}>{key}</Text>
@@ -93,7 +100,9 @@ const AdminDashboard = () => {
           </View>
 
           <View style={styles.sectionContainer}>
-            <Text style={styles.sectionHeader}>Courses</Text>
+            <Text style={styles.sectionHeader}>
+              <MaterialIcons name="school" size={24} color="#000" /> Courses
+            </Text>
             {courses.map((course) => (
               <TouchableOpacity key={course.id} style={styles.courseItem}>
                 <Text style={styles.courseTitle}>{course.title}</Text>
@@ -105,7 +114,10 @@ const AdminDashboard = () => {
           </View>
 
           <View style={styles.sectionContainer}>
-            <Text style={styles.sectionHeader}>Notifications</Text>
+            <Text style={styles.sectionHeader}>
+              <MaterialIcons name="notifications" size={24} color="#000" />{" "}
+              Notifications
+            </Text>
             {notifications.map((notification) => (
               <TouchableOpacity
                 key={notification.id}
@@ -117,33 +129,42 @@ const AdminDashboard = () => {
               </TouchableOpacity>
             ))}
           </View>
-          
+
           <View style={styles.sectionContainer}>
-            <Text style={styles.sectionHeader}>Recent Activity</Text>
+            <Text style={styles.sectionHeader}>
+              <MaterialIcons name="history" size={24} color="#000" /> Recent
+              Activity
+            </Text>
             {recentActivity.map((activity) => (
               <TouchableOpacity key={activity.id} style={styles.activityItem}>
                 <Text style={styles.activityAction}>{activity.action}</Text>
-                <Text style={styles.activityTimestamp}>{activity.timestamp}</Text>
+                <Text style={styles.activityTimestamp}>
+                  {activity.timestamp}
+                </Text>
               </TouchableOpacity>
             ))}
           </View>
 
           <View style={styles.sectionContainer}>
-            <Text style={styles.sectionHeader}>Quick Actions</Text>
+            <Text style={styles.sectionHeader}>
+              <MaterialIcons name="speed" size={24} color="#000" /> Quick
+              Actions
+            </Text>
             <View style={styles.quickActionsContainer}>
               {quickActions.map((action) => (
-                <TouchableOpacity key={action.id} style={styles.quickActionItem}>
-                  <MaterialIcons name={action.icon} size={24} color="#609BCB" />
+                <TouchableOpacity
+                  key={action.id}
+                  style={styles.quickActionItem}
+                >
+                  <MaterialIcons name={action.icon} size={24} color="#000" />
                   <Text style={styles.quickActionTitle}>{action.title}</Text>
                 </TouchableOpacity>
               ))}
             </View>
-
-            
           </View>
         </ScrollView>
       </ImageBackground>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -153,21 +174,23 @@ const styles = StyleSheet.create({
   },
   background: {
     flex: 1,
-    resizeMode: "cover",
+    resizeMode: "contain",
     justifyContent: "center",
   },
   headerContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 20,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-    paddingBottom: 15,
+    paddingHorizontal: 10,
+    backgroundColor: "#20CABE",
+    paddingTop: 40,
   },
   greetingText: {
     fontSize: 18,
     fontWeight: "bold",
     color: "#fff",
+    marginTop:15
   },
   logoutButton: {
     padding: 10,
@@ -178,7 +201,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
   },
   sectionContainer: {
-    backgroundColor: "rgba(255, 255, 255, 0.8)",
+    backgroundColor: "rgba(255, 255, 255, 0.9)",
     marginBottom: 20,
     padding: 15,
     borderRadius: 10,
@@ -188,7 +211,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 10,
-    color: "#333333",
+    color: "#20CABE",
   },
   userCountContainer: {
     flexDirection: "row",
@@ -205,7 +228,7 @@ const styles = StyleSheet.create({
   userCount: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#609BCB",
+    color: "#000",
   },
   courseItem: {
     flexDirection: "row",

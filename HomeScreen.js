@@ -24,44 +24,28 @@ const allCourses = [
       "This comprehensive course provides an in-depth understanding of autism spectrum disorders. Topics covered include diagnostic criteria, behavioral characteristics, and effective intervention strategies.",
   },
   {
-    title: "Teaching Strategies for Autism",
-    image: require("./assets/teaching.jpeg"),
+    title: "Understanding Autism",
+    image: require("./assets/understanding-autism.jpeg"),
     content:
-      "Explore evidence-based teaching strategies tailored to the unique needs of students with autism. Learn to create inclusive and supportive learning environments that foster academic and social success.",
+      "This comprehensive course provides an in-depth understanding of autism spectrum disorders. Topics covered include diagnostic criteria, behavioral characteristics, and effective intervention strategies.",
   },
-  {
-    title: "Supporting Learners with ADHD",
-    image: require("./assets/support.png"),
-    content:
-      "Gain insights into effective strategies for supporting learners with Attention Deficit Hyperactivity Disorder (ADHD). Explore classroom accommodations, behavioral interventions, and collaborative approaches.",
-  },
-  {
-    title: "Inclusive Education Practices",
-    image: require("./assets/inclusive.jpeg"),
-    content:
-      "Discover best practices for creating inclusive educational environments. This course covers diverse learning needs, differentiated instruction, and fostering a culture of acceptance and belonging.",
-  },
-  // Add more courses related to autism and learning difficulties
 ];
 
 const recentCourses = [
   {
-    title: "Recent Course 1",
+    title: "Understanding Autism",
     image: require("./assets/understanding-autism.jpeg"),
     content:
-      "Explore evidence-based teaching strategies tailored to the unique needs of students with autism. Learn to create inclusive and supportive learning environments that foster academic and social success.",
+      "This comprehensive course provides an in-depth understanding of autism spectrum disorders. Topics covered include diagnostic criteria, behavioral characteristics, and effective intervention strategies.",
   },
-
-  {
-    title: "Recent Course 2",
-    image: require("./assets/teaching.jpeg"),
-    content:
-      "Explore evidence-based teaching strategies tailored to the unique needs of students with autism. Learn to create inclusive and supportive learning environments that foster academic and social success.",
-  },
-  // Add more recent courses as needed
 ];
 
 const announcements = [
+  {
+    title: "Understanding Autism",
+    content:
+      "This comprehensive course provides an in-depth understanding of autism spectrum disorders. Topics covered include diagnostic criteria, behavioral characteristics, and effective intervention strategies.",
+  },
   {
     title: "New Course Available!",
     content: "Explore our latest course on inclusive education.",
@@ -70,8 +54,9 @@ const announcements = [
     title: "Upcoming Webinar",
     content: "Join our webinar on effective teaching strategies.",
   },
-  // Add more announcements as needed
+  // Add more announcements here as needed
 ];
+
 
 export default function HomeScreen() {
   const [searchText, setSearchText] = useState("");
@@ -163,14 +148,14 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        <ScrollView style={styles.sectionContainer} horizontal showsHorizontalScrollIndicator={false}>
           {recentCourses.map((course, index) => (
             <TouchableOpacity
               key={index}
               onPress={() =>
                 navigation.navigate("CourseDetail", {
                   course: course,
-                  content: course.content, 
+                  content: course.content,
                 })
               }
             >
@@ -241,17 +226,14 @@ export default function HomeScreen() {
               </Text>
             </View>
           </View>
-          {/* Add more achievements as needed */}
         </View>
       </ScrollView>
-      <View style={{ padding: 10 }}>
-        <TouchableOpacity
-          style={styles.addButton}
-          onPress={() => setNewCourseModalVisible(true)}
-        >
-          <MaterialIcons name="add" size={24} color="white" />
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity
+        style={styles.fabButton}
+        onPress={() => setNewCourseModalVisible(true)}
+      >
+        <MaterialIcons name="add" size={24} color="white" />
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }

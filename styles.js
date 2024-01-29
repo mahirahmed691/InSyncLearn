@@ -157,24 +157,6 @@ const globalStyles = StyleSheet.create({
     width: 50,
     height: 50,
   },
-  headerContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    backgroundColor: "#609BCB",
-    borderBottomWidth: 5,
-    borderColor: "#f0f0f0",
-  },
-  greetingText: {
-    fontWeight: "800",
-    marginTop: 15,
-    marginLeft: 10,
-    color: "white",
-    elevation: 5, // Add elevation for Android shadow
-    shadowColor: "#000", // iOS shadow color
-    shadowOffset: { width: 0, height: 2 }, // iOS shadow offset
-    shadowOpacity: 0.3, // iOS shadow opacity
-    shadowRadius: 2, // iOS shadow radius
-  },
   achievementContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -192,6 +174,129 @@ const globalStyles = StyleSheet.create({
   achievementContent: {
     fontSize: 16,
     color: '#555',
+  },
+  headerContainer: {
+    backgroundColor:'#20CABE',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal:10,
+    padding:10
+  },
+  greetingText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#FFF",
+  },
+  logo: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+  },
+  searchBarContainer: {
+    backgroundColor: "transparent",
+    borderBottomColor: "transparent",
+    borderTopColor: "transparent",
+    marginBottom: 16,
+  },
+  searchBarInputContainer: {
+    backgroundColor: "#f5f5f5",
+    borderRadius: 8,
+  },
+  searchBarInput: {
+    fontSize: 16,
+    paddingVertical: 10,
+  },
+  sectionContainer: {
+    marginBottom: 24,
+    marginLeft:10
+  },
+  sectionHeader: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 16,
+    marginLeft:10
+  },
+  quickAccessButtons: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 16,
+  },
+  iconTextContainer: {
+    alignItems: "center",
+  },
+  courseCard: {
+    width: 200,
+    marginRight: 16,
+    borderRadius: 8,
+    overflow: "hidden",
+    elevation: 4,
+  },
+  courseCardImage: {
+    width: "100%",
+    height: 120,
+    resizeMode: "cover",
+  },
+  courseCardContent: {
+    padding: 12,
+  },
+  courseCardTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginBottom: 8,
+  },
+  courseCardIcon: {
+    marginBottom: 8,
+  },
+  announcementContainer: {
+    marginBottom: 16,
+    marginLeft:10
+  },
+  announcementTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginBottom: 8,
+  },
+  announcementContent: {
+    fontSize: 14,
+    color: "#666",
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContent: {
+    backgroundColor: "#fff",
+    padding: 20,
+    borderRadius: 8,
+    elevation: 4,
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 16,
+  },
+  modalInput: {
+    backgroundColor: "#f5f5f5",
+    borderRadius: 8,
+    marginBottom: 16,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    fontSize: 16,
+  },
+  fabButton: {
+    position: "absolute",
+    bottom: 20,
+    right: 20,
+    backgroundColor: "#007bff",
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    justifyContent: "center",
+    alignItems: "center",
+    elevation: 6,
   },
 });
 

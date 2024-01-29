@@ -8,23 +8,32 @@ import {
   View,
   ImageBackground,
   Image,
+  Modal,
+  Pressable,
+  ScrollView
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import AdminDashboard from "./AdminHomeScreen"; // Import AdminDashboard
+import { IconButton } from "react-native-paper";
 
-const backgroundImg = require("./assets/learn.png");
+const backgroundImg = require("./assets/learn.gif");
 const logoImg = require("./assets/Logo.png");
 
 const users = [
   { email: "mahirahmed691@gmail.com", password: "admin123", role: "admin" },
   { email: "mahirahmed691@gmail.com", password: "user123", role: "user" },
-  { email: "mahirahmed691@gmail.com", password: "youth123", role: "youth-worker" },
+  {
+    email: "mahirahmed691@gmail.com",
+    password: "youth123",
+    role: "youth-worker",
+  },
 ];
 
 const AuthScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [modalVisible, setModalVisible] = useState(false);
   const navigation = useNavigation();
 
   const handleLogin = () => {
@@ -71,9 +80,22 @@ const AuthScreen = () => {
     navigation.navigate("Admin");
   };
 
+  const toggleModal = () => {
+    setModalVisible(!modalVisible);
+  };
+
   return (
     <ImageBackground source={backgroundImg} style={styles.background}>
       <SafeAreaView style={styles.container}>
+        <View style={styles.infoButtonContainer}>
+          <IconButton
+            icon="information"
+            iconColor="white"
+            size={30}
+            onPress={toggleModal}
+          />
+        </View>
+
         <Image source={logoImg} style={styles.logo} />
         <View style={styles.form}>
           <TextInput
@@ -95,18 +117,94 @@ const AuthScreen = () => {
             <Text style={styles.buttonText}>Login</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={handleRegister}>
-            <Text style={styles.buttonText}>User</Text>
+            <Text style={styles.buttonText}>Register</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={handleYouth}>
+          {/* <TouchableOpacity style={styles.button} onPress={handleYouth}>
             <Text style={styles.buttonText}>Youth Worker</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={handleAdmin}>
             <Text style={styles.buttonText}>Admin</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         <View style={styles.footer}>
-          <Text style={styles.footerText}>© 2024 InSyncLearn. All rights reserved.</Text>
+          <Text style={styles.footerText}>
+            © 2024 InSyncLearn. All rights reserved.
+          </Text>
         </View>
+
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={toggleModal}
+        >
+          <View style={styles.modalContainer}>
+            <View style={styles.modalContent}>
+              <Text style={styles.modalHeader}>InSyncLearn</Text>
+              <Text style={{fontWeight:"900", textAlign:'left', marginBottom:20}}>Version: 1.0.0</Text>
+              <ScrollView style={{height:200}}>
+              <Text style={{fontWeight:'500', margin:5, letterSpacing:0.8}}>
+                InSyncLearn is a comprehensive learning platform
+                designed to provide users with access to a wide range of
+                educational resources and tools. Whether you're a student,
+                educator, or lifelong learner, InSyncLearn has something for
+                everyone.
+              </Text>
+              <Text style={{fontWeight:'500', margin:5}}>Developer: Mahir Ahmed</Text>
+              <Text style={{fontWeight:'500', margin:5}}>Contact: mahirahmed691@gmail.com</Text>
+              <Text style={{fontWeight:'500', margin:5}}>Website: mahirahmed691.tech</Text>
+              <Text style={{fontWeight:'500', margin:5}}>
+                Privacy Policy:{" "}
+                <Text
+                  style={styles.link}
+                  onPress={() =>
+                    Linking.openURL(
+                      "https://www.insynclearn.com/privacy-policy"
+                    )
+                  }
+                >
+                  View Privacy Policy
+                </Text>
+              </Text>
+              <Text style={{fontWeight:'500', margin:5}}>
+                Terms of Service:{" "}
+                <Text
+                  style={styles.link}
+                  onPress={() =>
+                    Linking.openURL(
+                      "https://www.insynclearn.com/terms-of-service"
+                    )
+                  }
+                >
+                  View Terms of Service
+                </Text>
+              </Text>
+              <Text style={{fontWeight:'500', margin:5}}>
+                Attributions: Icons made by{" "}
+                <Text
+                  style={styles.link}
+                  onPress={() =>
+                    Linking.openURL("https://www.flaticon.com/authors/freepik")
+                  }
+                >
+                  Freepik
+                </Text>{" "}
+                from Flaticon
+              </Text>
+              <Text style={{fontWeight:'500', margin:5}}>
+                Credits: Special thanks to our development team and contributors
+                for their hard work and dedication.
+              </Text>
+              <Text style={{fontWeight:'500', margin:5}}>Release Notes:</Text>
+              <Text style={{fontWeight:'500', margin:5}}>- Version 1.0.0: Initial release of InSyncLearn</Text>
+              </ScrollView>
+              <Pressable style={styles.closeButton} onPress={toggleModal}>
+                <Text style={styles.closeButtonText}>Close</Text>
+              </Pressable>
+            </View>
+          </View>
+          
+        </Modal>
       </SafeAreaView>
     </ImageBackground>
   );
@@ -122,13 +220,18 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     backgroundColor: "rgba(255, 255, 255, 0)", // Adjust opacity as needed
-    justifyContent:'center'
+    justifyContent: "center",
   },
   logo: {
-    width: 150,
-    height: 150,
-    marginBottom: 10,
-    borderRadius:40
+    width: 120,
+    height: 120,
+    marginBottom: 50,
+    borderRadius: 40,
+  },
+  infoButtonContainer: {
+    position: "absolute",
+    top: 50,
+    left: 20,
   },
   form: {
     width: "100%",
@@ -145,7 +248,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff", // Set background color for input
   },
   button: {
-    backgroundColor: "crimson",
+    backgroundColor: "#20CABE",
     width: "80%",
     height: 40,
     borderRadius: 5,
@@ -164,6 +267,34 @@ const styles = StyleSheet.create({
   footerText: {
     color: "#fff",
     fontSize: 12,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContent: {
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    padding: 20,
+    width: "80%",
+    alignItems: "center",
+  },
+  modalHeader: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  closeButton: {
+    backgroundColor: "#20CABE",
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 20,
+  },
+  closeButtonText: {
+    color: "#fff",
+    fontWeight: "bold",
   },
 });
 

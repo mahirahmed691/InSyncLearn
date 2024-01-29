@@ -8,6 +8,7 @@ import {
   ImageBackground,
   StatusBar,
   Platform,
+  SafeAreaView
 } from "react-native";
 import { IconButton } from "react-native-paper"; // Import IconButton
 import { useNavigation } from "@react-navigation/native";
@@ -77,44 +78,48 @@ const YouthworkDashboard = () => {
     // Add navigation logic to navigate to the "Time Off Request" screen
   };
 
+  
+
   return (
     <View style={styles.container}>
       <StatusBar translucent backgroundColor="transparent" />
       <ImageBackground
-        source={require("./assets/youthBackground.jpeg")}
+        source={require("./assets/youthBackground.png")}
         style={styles.background}
       >
         <View style={styles.headerContainer}>
+        <MaterialIcons name="dashboard" size={34} color="#fff" />
           <Text style={styles.greetingText}>Hello, Youth Worker!</Text>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "flex-end",
+              marginHorizontal: 20,
+            }}
+          >
+            <IconButton
+              icon="bandage"
+              iconColor="#FFF"
+              color="#fff"
+              size={20}
+              style={styles.timeOffButton}
+              onPress={handleSickTimeOff}
+            />
+            <IconButton
+              icon="airplane-clock"
+              iconColor="#fff"
+              color="#fff"
+              size={20}
+              style={styles.timeOffButton}
+              onPress={handleRequestTimeOff}
+            />
+          </View>
+
           <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-            <MaterialIcons name="logout" size={24} color="#fff" />
+            <MaterialIcons name="logout" size={20} color="#fff" />
           </TouchableOpacity>
         </View>
 
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "flex-end",
-            marginHorizontal: 20,
-          }}
-        >
-          <IconButton
-            icon="bandage"
-            iconColor="#FFF"
-            color="#fff"
-            size={24}
-            style={styles.timeOffButton}
-            onPress={handleSickTimeOff}
-          />
-          <IconButton
-            icon="airplane-clock"
-            iconColor="#fff"
-            color="#fff"
-            size={24}
-            style={styles.timeOffButton}
-            onPress={handleRequestTimeOff}
-          />
-        </View>
         <View style={styles.sectionContainer}>
           <Text style={styles.RotaHeader}>Your Schedule:</Text>
           {rota.map((item) => (
@@ -176,7 +181,6 @@ const YouthworkDashboard = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 40,
   },
   background: {
     flex: 1,
@@ -187,32 +191,32 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 20,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-    paddingBottom: 15,
+    paddingHorizontal: 10,
+    backgroundColor: "#20CABE",
+    paddingTop:40
   },
   greetingText: {
     fontSize: 18,
-    fontWeight: "bold",
-    color: "#fff",
+    fontWeight: "900",
+    color: "#FFF",
+    marginTop:15
   },
   logoutButton: {
-    padding: 10,
   },
   content: {
     flexGrow: 1,
     paddingHorizontal: 20,
-    paddingVertical: 15,
   },
   sectionContainer: {
     marginBottom: 20,
   },
   sectionHeader: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontWeight: "900",
     marginBottom: 10,
-    color: "#fff",
-    textShadowColor: "rgba(0, 0, 0, 0.5)",
+    color: "white",
+    textShadowColor: "rgba(0, 0, 0, 1)",
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 2,
   },
@@ -221,14 +225,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 10,
     color: "#fff",
-    textShadowColor: "rgba(0, 0, 0, 0.5)",
+    textShadowColor: "rgba(0, 0, 0, 1)",
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 2,
     marginLeft: 10,
     letterSpacing: 2,
   },
   activityItem: {
-    backgroundColor: "rgba(255, 255, 255, 0.8)",
+    backgroundColor: "rgba(255, 255, 255, 0.9)",
     padding: 15,
     marginBottom: 10,
     borderRadius: 10,
@@ -240,7 +244,7 @@ const styles = StyleSheet.create({
   activityTitle: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#333",
+    color: "#20CABE",
     marginBottom: 5,
   },
   activityAttendees: {
@@ -253,7 +257,7 @@ const styles = StyleSheet.create({
     color: "#666",
   },
   messageItem: {
-    backgroundColor: "rgba(255, 255, 255, 0.8)",
+    backgroundColor: "rgba(255, 255, 255, 0.9)",
     padding: 15,
     marginBottom: 10,
     borderRadius: 10,
@@ -265,7 +269,7 @@ const styles = StyleSheet.create({
   messageSender: {
     fontSize: 14,
     fontWeight: "bold",
-    color: "#333",
+    color: "#20CABE",
     marginBottom: 5,
   },
   messageContent: {
@@ -273,7 +277,7 @@ const styles = StyleSheet.create({
     color: "#666",
   },
   taskItem: {
-    backgroundColor: "rgba(255, 255, 255, 0.8)",
+    backgroundColor: "rgba(255, 255, 255, 0.9)",
     padding: 15,
     marginBottom: 10,
     borderRadius: 10,
@@ -285,7 +289,7 @@ const styles = StyleSheet.create({
   taskTitle: {
     fontSize: 14,
     fontWeight: "bold",
-    color: "#333",
+    color: "#20CABE",
     marginBottom: 5,
   },
   taskStatus: {
@@ -293,7 +297,7 @@ const styles = StyleSheet.create({
     color: "#666",
   },
   rotaItem: {
-    backgroundColor: "rgba(255, 255, 255, 0.7)",
+    backgroundColor: "rgba(255, 255, 255, 0.9)",
     padding: 15,
     marginBottom: 10,
     borderRadius: 10,
@@ -307,7 +311,7 @@ const styles = StyleSheet.create({
   rotaDate: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#333",
+    color: "#20CABE",
     marginBottom: 5,
   },
   rotaShift: {
@@ -320,7 +324,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
   },
   learner: {
-    backgroundColor: "#872657",
+    backgroundColor: "#000",
     color: "#fff",
     paddingHorizontal: 8,
     paddingVertical: 4,

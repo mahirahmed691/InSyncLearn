@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
   },
   logoutButton: {
     width: "150%",
-    backgroundColor: "#000",
+    backgroundColor: "#20CABE",
     alignSelf:'center',
   },
 });
