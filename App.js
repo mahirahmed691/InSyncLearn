@@ -14,6 +14,11 @@ import AdminDashboard from "./Screens/AdminHomeScreen"; // Import AdminDashboard
 import YouthWorkerDashboard from "./Screens/YouthworkDashboard"; // Import YouthWorkerDashboard
 import MessagingScreen from "./Screens/MessagingScreen";
 import RegisterScreen from "./Screens/RegisterScreen";
+import SENDashboard from "./Screens/SENDashboard";
+import StudentProfile from "./Screens/StudentProfileScreen";
+import RotaScreen from "./Screens/RotaScreen";
+import ProfileScreen from "./Screens/ProfileScreen";
+import ScheduleAppointmentScreen from "./Screens/ScheduleAppointmentScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -47,6 +52,10 @@ const DashboardTabs = () => (
           iconName = focused ? "settings" : "settings-outline";
         } else if (route.name === "Upload") {
           iconName = focused ? "cloud-upload" : "cloud-upload-outline";
+        } else if (route.name === "Rota") {
+          iconName = focused ? "calendar" : "calendar-outline";
+        } else if (route.name === "Profile") {
+          iconName = focused ? "calendar" : "calendar-outline";
         }
 
         return <Icon name={iconName} size={size} color={color} />;
@@ -57,11 +66,39 @@ const DashboardTabs = () => (
       inactiveTintColor: "#000",
     }}
   >
-    <Tab.Screen name="Home" component={HomeScreen} />
-    <Tab.Screen name="Courses" component={CoursesScreen} />
-    <Tab.Screen name="Upload" component={UploadScreen} />
-    <Tab.Screen name="Notifications" component={NotificationsScreen} />
-    <Tab.Screen name="Settings" component={SettingsScreen} />
+    <Tab.Screen
+      name="Home"
+      component={HomeScreen}
+      options={{ headerShown: false }}
+    />
+
+    <Tab.Screen
+      name="Courses"
+      component={CoursesScreen}
+      options={{ headerShown: false }}
+    />
+
+    <Tab.Screen name="Rota" component={RotaScreen} />
+    <Tab.Screen
+      name="Upload"
+      component={UploadScreen}
+      options={{ headerShown: false }}
+    />
+    <Tab.Screen
+      name="Notifications"
+      component={NotificationsScreen}
+      options={{ headerShown: false }}
+    />
+    <Tab.Screen
+      name="Profile"
+      component={ProfileScreen}
+      options={{ headerShown: false }}
+    />
+    <Tab.Screen
+      name="Settings"
+      component={SettingsScreen}
+      options={{ headerShown: false }}
+    />
   </Tab.Navigator>
 );
 
@@ -103,6 +140,14 @@ export default function Dashboard() {
               options={{ headerShown: false }}
             />
           </>
+        ) : userRole === "SEN" ? (
+          <>
+            <Stack.Screen
+              name="SEN"
+              component={{ SENDashboard }}
+              options={{ headerShown: false }}
+            />
+          </>
         ) : (
           <>
             <Stack.Screen
@@ -115,9 +160,14 @@ export default function Dashboard() {
               component={AdminDashboard}
               options={{ headerShown: false }}
             />
-             <Stack.Screen
+            <Stack.Screen
               name="YouthWork"
               component={YouthWorkerDashboard}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="SEN"
+              component={SENDashboard}
               options={{ headerShown: false }}
             />
           </>
@@ -152,16 +202,22 @@ export default function Dashboard() {
           component={AuthScreen}
           options={{ headerShown: false }}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="Messaging"
           component={MessagingScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-              name="Register"
-              component={RegisterScreen}
-              options={{ headerShown: false }}
-            />
+          name="Appointments"
+          component={ScheduleAppointmentScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Register"
+          component={RegisterScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="Student Profile" component={StudentProfile} />
       </Stack.Navigator>
     </NavigationContainer>
   );

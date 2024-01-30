@@ -11,6 +11,11 @@ const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: backgroundColor,
+    paddingTop:50
+  },
+  homeContainer: {
+    flex: 1,
+    backgroundColor: backgroundColor,
   },
   header: {
     fontSize: 24,
@@ -181,7 +186,8 @@ const globalStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal:10,
-    padding:10
+    paddingTop:50,
+    paddingBottom:10
   },
   greetingText: {
     fontSize: 20,
@@ -297,6 +303,12 @@ const globalStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     elevation: 6,
+  },
+  dateText: {
+    fontSize: 12,
+    fontWeight: "600",
+    color: "#FFF",
+    marginRight: 10,
   },
 });
 

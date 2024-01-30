@@ -93,10 +93,19 @@ export default function HomeScreen() {
     setNewCourseModalVisible(false);
   };
 
+  const currentDate = new Date();
+  // Format the date to display only day and month
+  const formattedDate = currentDate.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+  });
+
+
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.homeContainer}>
       <View style={styles.headerContainer}>
-        <Text style={styles.greetingText}>Hello, User!</Text>
+        <View><Text style={styles.dateText}>{formattedDate}</Text>
+        <Text style={styles.greetingText}>Hello, User!</Text></View>
         <Image
           source={require("../assets/Logo.png")} // Replace with your logo source
           style={styles.logo}
@@ -234,6 +243,6 @@ export default function HomeScreen() {
       >
         <MaterialIcons name="add" size={24} color="white" />
       </TouchableOpacity>
-    </SafeAreaView>
+    </View>
   );
 }
