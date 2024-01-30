@@ -24,19 +24,18 @@ To get started with InSyncLearn, follow these steps:
 
 1. **Clone the Repository**: Clone this GitHub repository to your local machine using the following command:
    ```bash
-   git clone https://github.com/yourusername/InSyncLearn.git
+   git clone https://github.com/mahirahmed691/InSyncLearn.git
 
 2. **Install Dependencies**: Navigate to the project directory and install the necessary dependencies using npm or yarn:
 
-```cd InSyncLearn
-``` npm install 
+cd InSyncLearn
+npm install 
 
+3. **Run the Application**: Run the application on an iOS or Android emulator, or a physical device connected to your development environment using Expo:
 
+npx expo start
 
-4. **Run the Application**: Run the application on an iOS or Android emulator, or a physical device connected to your development environment using Expo:
-
-
-5. **Start Exploring**: Once the application is running, you can explore its features and functionalities as a user or developer.
+4. **Start Exploring**: Once the application is running, you can explore its features and functionalities as a user or developer.
 
 ## Contributing
 
