@@ -47,9 +47,6 @@ Contributions are welcome! If you'd like to contribute to InSyncLearn, please fo
 4. Commit your changes with clear and descriptive commit messages.
 5. Push your changes to your fork and submit a pull request to the main repository.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgements
 
