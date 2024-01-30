@@ -34,8 +34,8 @@ To get started with InSyncLearn, follow these steps:
 
 3. **Run the Application**: Run the application on an iOS or Android emulator, or a physical device connected to your development environment using Expo:
 
-  ```bash
-  npx expo start
+    ```bash
+    npx expo start
 
 ```
 
