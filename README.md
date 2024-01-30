@@ -28,7 +28,7 @@ To get started with InSyncLearn, follow these steps:
 
 2. **Install Dependencies**: Navigate to the project directory and install the necessary dependencies using npm or yarn:
 
-cd InSyncLearn
+``cd InSyncLearn
 npm install 
 
 3. **Run the Application**: Run the application on an iOS or Android emulator, or a physical device connected to your development environment using Expo:
