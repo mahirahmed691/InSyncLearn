@@ -60,4 +60,4 @@ InSyncLearn was developed with the support and contributions of the following in
 
 ## Contact
 
-For questions, feedback, or support regarding InSyncLearn, please contact [your email address].
+For questions, feedback, or support regarding InSyncLearn, please contact mahirahmed691@gmail.com.
