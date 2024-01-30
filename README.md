@@ -37,7 +37,6 @@ To get started with InSyncLearn, follow these steps:
     ```bash
     npx expo start
 
-
 ## Contributing
 
 Contributions are welcome! If you'd like to contribute to InSyncLearn, please follow these guidelines:
