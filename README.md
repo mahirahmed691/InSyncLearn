@@ -38,8 +38,6 @@ To get started with InSyncLearn, follow these steps:
     npx expo start
 
 
-4. **Start Exploring**: Once the application is running, you can explore its features and functionalities as a user or developer.
-
 ## Contributing
 
 Contributions are welcome! If you'd like to contribute to InSyncLearn, please follow these guidelines:
