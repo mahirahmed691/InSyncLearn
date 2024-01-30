@@ -37,7 +37,6 @@ To get started with InSyncLearn, follow these steps:
     ```bash
     npx expo start
 
-   
 
 4. **Start Exploring**: Once the application is running, you can explore its features and functionalities as a user or developer.
 
